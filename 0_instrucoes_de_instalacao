@@ -1,0 +1,122 @@
+################################################
+Antes de começar...
+################################################
+
+Aqui está a lista de tarefas que iremos fazer:
+1. Instalar Java 8
+2. Instalar Scala
+3. Instalar e configurar Spark
+4. Instalar e configurar Atom
+
+################################################
+Instalando Java
+################################################
+
+Por motivos de compatibilidade com Spark e Hadoop, temos que usar Java 8.
+
+Iremos instalar o Java 8 por meio dos seguintes comandos:
+sudo apt-get update
+sudo apt install openjdk-8-jdk
+
+Verifique se a instalação está correta por meio do comando:
+java -version 
+
+Se aparecer uma mensagem mencionando que a versão instalada do Java é a versão 1.8, então está tudo certo.
+
+Caso apareça alguma outra versão do Java, pode ser que sua máquina tenha mais de uma versão do Java instalada. Neste caso, execute o comando abaixo e selecione a versão 1.8 
+sudo update-alternatives --config java
+
+################################################
+Instalando Scala
+################################################
+
+Faça a instalação do Scala por meio do comando:
+sudo apt-get install scala
+
+Depois verifique se você consegue acessar o prompt do Scala digitando:
+scala
+
+################################################
+Download do Apache Spark
+################################################
+
+Acesse o site https://spark.apache.org/downloads.html e faça download da seguinte versão do Apache Spark:
+
+Choose a Spark release: 2.4.X
+Choose a package type: Pre-built for Apache Hadoop 2.7 and later
+
+Note: não se preocupe se a sua versão do Spark não é exatamente a versão que eu estou utilizando. Em caso de incompatibilidades, vou atualizar este este tutorial. Portanto , vá em frente :)
+
+Ao final do download você encontrará um arquivo de extensão .tgz na sua pasta de download.
+Você deve extrair este arquivo para o diretório /etc do seu computador. Portanto:
+
+1. Acesse sua pasta de downloads
+cd <<caminho completo para sua pasta>>
+No meu caso ficou assim:
+cd /home/weslley/Downloads
+
+2. Extrair o arquivo .tgz
+tar xvf <<nome do seu arquivo .tgz>>
+No meu caso ficou assim:
+tar xvf spark-2.4.4-bin-hadoop2.7.tgz
+
+3. Copiar a pasta extraída para o diretório /etc
+cp <<nome da pasta extraída>> /etc
+No meu caso ficou assim:
+sudo cp -r spark-2.4.4-bin-hadoop2.7 /etc
+
+################################################
+Criando um symbolic link para a pasta do Spark
+################################################
+ 
+Execute os comandos:
+cd /etc
+ln -s spark-2.4.0-bin-hadoop2.7 spark
+
+Onde, "spark-2.4.0-bin-hadoop2.7" é o nome da pasta onde você extraiu o Spark.
+
+################################################
+Editando o arquivo .bashrc
+################################################
+
+Editar arquivo .bashrc e adicionar as seguintes linhas:
+
+export SPARK_HOME=/etc/spark
+export PATH=$SPARK_HOME/bin:$PATH
+
+Note: Caso não esteja familirializado com Linux, o arquivo .bashrc está disponível na sua home folder (/home/<<seu_usuario>>), que pode ser acessada por meio do comando cd ~/
+
+################################################
+Carregando as novas configurações do .bashrc
+################################################
+
+As configurações que você acrescentou no aquivo .bashrc somente terão efeito após executar os seguintes comandos:
+
+cd
+source source .bashrc
+
+################################################
+Download e instação do Atom
+################################################
+
+Acesse o site https://atom.io/ e faça download do Atom.
+Você pode escolher o arquivo .DEB
+
+Quando concluir o download:
+1. localize o arquivo na sua máquina 
+2. clique com o botão direito sobre o arquivo
+3. Escolha a opção "abrir com instalação de programa"
+4. Clique em "instalar"
+
+################################################
+Instalando alguns pacotes do Atom
+################################################
+
+Quando terminar a instalação do Atom, abra o programa e faça:
+1. Help -> Welcome guide
+2. Install a package
+3. Open installer
+4. Pesquise por "scala"
+5. Encontre o pacote "language-scala" e clique em "install"
+6. Quando terminar a instalação do pacote, pesquise por "terminal"
+7. Encontre o pacote "platformio-ide-terminal" e clique em "install"
