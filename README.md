@@ -2,7 +2,7 @@
 Weslley Moura
 
 ## URL do curso
-https://www.udemy.com/criando-modelos-de-machine-learning/
+https://www.udemy.com/course/apache-spark-dataframe-scala/
 
 ## Descrição do curso
 Prepare-se para aprender a usar o framework de processamento de dados distribuído mais utilizado pelos profissionais de data science, Apache Spark!
